@@ -13,7 +13,7 @@ type Transaction struct {
 	PixKeyTo 				string		`json:"pixKeyTo" validate:"required"`
 	PixKeyToKind		string		`json:"pixKeyToKind" valid:"required"`
 	Description 		string		`json:"description" validate:"required"`
-	Status 					string		`json:"status" validate:"required"`
+	Status 					string		`json:"status" validate:"-"`
 	Error						string		`json:"error"`
 }
 

@@ -85,6 +85,7 @@ func (processor *KafkaProcessor) processTransaction(msg *ckafka.Message) error {
 		transaction.PixKeyTo,
 		transaction.PixKeyToKind,
 		transaction.Description,
+		transaction.ID,
 	)
 	if err != nil {
 		fmt.Println("error registering transaction", err)

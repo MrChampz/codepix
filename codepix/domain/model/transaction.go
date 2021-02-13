@@ -54,6 +54,7 @@ func NewTransaction(
 	amount float64,
 	pixKeyTo *PixKey, 
 	description string,
+	id string,
 ) (*Transaction, error) {
 	transaction := Transaction {
 		AccountFrom: accountFrom,
@@ -63,7 +64,10 @@ func NewTransaction(
 		Description: description,
 	}
 
-	transaction.ID = uuid.NewV4().String()
+	if id == "" {
+ 		transaction.ID = uuid.NewV4().String()
+	}
+
 	transaction.CreatedAt = time.Now()
 
 	err := transaction.isValid()

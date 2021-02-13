@@ -37,5 +37,4 @@ export class CreateBankAccountsTable1613106392246 implements MigrationInterface 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('bank_accounts')
   }
-
 }

@@ -33,7 +33,6 @@ export class BankAccount {
     if (this.id) {
       return;
     }
-
     this.id = uuidv4();
   }
 
@@ -42,7 +41,6 @@ export class BankAccount {
     if (this.balance) {
       return;
     }
-
     this.balance = 0;
   }
 }

@@ -18,6 +18,7 @@ func (useCase *TransactionUseCase) Register(
 	pixKeyTo string,
 	pixKeyKindTo string,
 	description string,
+	id string,
 ) (*model.Transaction, error) {
 
 	account, err := useCase.PixRepository.FindAccount(accountId)
@@ -30,7 +31,7 @@ func (useCase *TransactionUseCase) Register(
 		return nil, err
 	}
 
-	transaction, err := model.NewTransaction(account, amount, pixKey, description)
+	transaction, err := model.NewTransaction(account, amount, pixKey, description, id)
 	if err != nil {
 		return nil, err
 	}
