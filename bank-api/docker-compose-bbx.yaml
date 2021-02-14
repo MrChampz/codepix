@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  app_bbx:
+    build: .
+    entrypoint: .docker/entrypoint.sh
+    container_name: codepix-bank-api-bbx
+    ports:
+      - 8001:3000
+    volumes:
+      - .:/home/node/app
+      - ./dist-bbx:/home/node/app/dist
+    environment:
+      - TYPEORM_HOST=db-bbx
+      - TYPEORM_DATABASE=bbx
+      - BANK_CODE=001
+    depends_on:
+      - db-bbx
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+    networks:
+      - bbx-network
+
+  db-bbx:
+    build: .docker/postgres
+    container_name: codepix-bank-api-db-bbx
+    restart: always
+    tty: true
+    volumes:
+      - .docker/dbdata-bbx:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=bbx
+    networks:
+      - bbx-network
+
+networks:
+  bbx-network:
+    driver: bridge

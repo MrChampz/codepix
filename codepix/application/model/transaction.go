@@ -7,9 +7,9 @@ import (
 )
 
 type Transaction struct {
-	ID	 						string		`json:"id" validate:"required;uuid4"`
-	AccountID 			string		`json:"accountId" validate:"required;uuid4"`
-	Amount 					float64		`json:"amount" validate:"required;numeric"`
+	ID	 						string		`json:"id" validate:"required,uuid4"`
+	AccountID 			string		`json:"accountId" validate:"required,uuid4"`
+	Amount 					float64		`json:"amount" validate:"required,numeric"`
 	PixKeyTo 				string		`json:"pixKeyTo" validate:"required"`
 	PixKeyToKind		string		`json:"pixKeyToKind" valid:"required"`
 	Description 		string		`json:"description" validate:"required"`

@@ -32,7 +32,7 @@ services:
       bash -c
       "sleep 5s &&
       kafka-topics --create --topic=transactions --if-not-exists --bootstrap-server=kafka:9092 &&
-      kafka-topics --create --topic=transaction-confirmation --if-not-exists --bootstrap-server=kafka:9092 &&
+      kafka-topics --create --topic=transaction_confirmation --if-not-exists --bootstrap-server=kafka:9092 &&
       kafka-topics --create --topic=bank001 --if-not-exists --bootstrap-server=kafka:9092 &&
       kafka-topics --create --topic=bank002 --if-not-exists --bootstrap-server=kafka:9092"
     extra_hosts:

@@ -80,12 +80,12 @@ func (processor *KafkaProcessor) processTransaction(msg *ckafka.Message) error {
 	transactionUseCase := factory.TransactionUseCaseFactory(processor.Database)
 
 	createdTransaction, err := transactionUseCase.Register(
+		transaction.ID,
 		transaction.AccountID,
 		transaction.Amount,
 		transaction.PixKeyTo,
 		transaction.PixKeyToKind,
 		transaction.Description,
-		transaction.ID,
 	)
 	if err != nil {
 		fmt.Println("error registering transaction", err)

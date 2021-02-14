@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  app-cter:
+    build: .
+    entrypoint: .docker/entrypoint.sh
+    container_name: codepix-bank-api-cter
+    ports:
+      - 8002:3000
+    volumes:
+      - .:/home/node/app
+      - ./dist-cter:/home/node/app/dist
+    environment:
+      - TYPEORM_HOST=db-cter
+      - TYPEORM_DATABASE=cter
+      - BANK_CODE=002
+    depends_on:
+      - db-cter
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+    networks:
+      - cter-network
+
+  db-cter:
+    build: .docker/postgres
+    container_name: codepix-bank-api-db-cter
+    restart: always
+    tty: true
+    volumes:
+      - .docker/dbdata-cter:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=cter
+    networks:
+      - cter-network
+
+networks:
+  cter-network:
+    driver: bridge

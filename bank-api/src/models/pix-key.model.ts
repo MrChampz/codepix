@@ -29,7 +29,7 @@ export class PixKey {
   key: string;
 
   @ManyToMany(() => BankAccount)
-  @JoinColumn({ name: 'bankAccountId' })
+  @JoinColumn({ name: 'bank_account_id' })
   bankAccount: BankAccount;
 
   @Column({ name: 'bank_account_id' })

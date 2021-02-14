@@ -35,8 +35,8 @@ lerna-debug.log*
 
 .history/
 .docker/dbdata
-.docker/dbdatabbx
-.docker/dbdatacter
+.docker/dbdata-bbx
+.docker/dbdata-cter
 dist-bbx
 dist-cter
 
